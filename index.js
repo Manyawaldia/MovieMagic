@@ -81,7 +81,7 @@ app.post('/Movies', function (req, res) {
         resultArray.forEach(function (v) { console.log(v) })
 
         ///// tried to style the raw data 
-        // let h = '<h1 style="background:red; color:whitesmoke;margin:20px; border:20px solid red;">Movie Rated Above:  ' + parseInt(rating) +'</h1>'
+        // let h = '<h1 style="background:#d6b3f5; color:black;margin:20px; border:20px;">Movie Info You asked for </h1>';
         // let str ='<table style="margin-left:20px;>';
         // let row='';
         // resultArray.forEach(function(v){
@@ -89,9 +89,9 @@ app.post('/Movies', function (req, res) {
         //      row = row +'<tr>'+ '<td>' + v.title +  '</td>' + '<td>' + v.averageRating  +  '</td>' + '</tr>';
         // });
 
-        // // for(let i = 0; i<resultArray.length; i++){
-        // //    row = row+'<tr>'+ '<td>' + resultArray[i].title +  '</td>' + '<td>' + resultArray[i].averageRating  +  '</td>' + '</tr>';
-        // // }
+        // for(let i = 0; i<resultArray.length; i++){
+        //    row = row+'<tr>'+ '<td>' + resultArray[i].title +  '</td>' + '<td>' + resultArray[i].averageRating  +  '</td>' + '</tr>';
+        // }
         // str=str + row + '</table>';
 
 
