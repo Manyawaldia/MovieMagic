@@ -126,7 +126,6 @@ app.post('/Add', function(req,res){
     //     id = resultArray + 1;
     // });
     
-    var insertInto = '(id,'; 
     var appendToQuery = ''+ id; //first argument of the insert query is the ID NUMBER
 
     if (req.body.titlesearch2) {
