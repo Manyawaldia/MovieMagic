@@ -98,11 +98,13 @@ app.post('/Movies', function (req, res) {
         /////
         res.send(rows);
     });
+    // config.close();
 
 });
 
 app.post('/Add', function(req,res){
 
+    
     //configure web server to wor kwith mysql 
     const mysql = require('mysql');
 
@@ -114,53 +116,92 @@ app.post('/Add', function(req,res){
         //port: '3306'
     });
 
-    console.log(req.body);
-    let rating = req.body.title1;
-    console.log(rating);
-    var count = "Select COUNT(title) from movies";
-    var id= 15000; 
-    // config.query(count, (err, rows) => {
-    //     if (err) throw err;
-    //     //console.log(rows);
-    //     var resultArray = Object.values(JSON.parse(JSON.stringify(rows)))
-    //     id = resultArray + 1;
-    // });
+    //keep changing the ids or else dupes
+    var id=  17057; 
+
+    let queryString = `Insert into movies ( id, title, year, genre1) VALUES (?,?,?,?)`;
+    let insert1 = [id, req.body.titlesearch2, req.body.yearsearch2, req.body.genresearch2];
     
-    var appendToQuery = ''+ id; //first argument of the insert query is the ID NUMBER
-
-    if (req.body.titlesearch2) {
-
-        let titlesearch2 = req.body.titlesearch2;
-        appendToQuery = appendToQuery + ',' + titlesearch2;
-    }
-    if (req.body.yearsearch2) {
-
-        let yearsearch2 = req.body.yearsearch2;
-        appendToQuery = appendToQuery + ',' + yearsearch2;
-    }
-    if (req.body.genresearch2) {
-
-        let genresearch2 = req.body.genresearch2;
-        appendToQuery = appendToQuery+  ',' + genresearch2;
-    }
-
-    if (req.body.studiosearch2) {
-
-        let studiosearch2 = req.body.studiosearch2;
-        let q2 = studiosearch2;
-    }
-
-    var queryString = "Insert into movies (id, title, year, genre1) VALUES (" + appendToQuery + ");";
     console.log(queryString);
 
-    config.query(queryString, (err) => {
-        if (err) throw err;
+    config.query(queryString, insert1 , function(err, rows)  {
+        if (err) {
+          return console.error(err.message);
+        }
+        else{
+            console.log("Success! Inserted 1 movie");
+            var resultArray = Object.values(JSON.parse(JSON.stringify(rows)))
+            resultArray.forEach(function (v) { console.log(v) })
+        }
+        //TODO: prnt out the right movie
+        res.send(rows);
 
-        //res.send(rows);
+      });
+    //   config.close();
+});
+
+app.get('/Stored1', function(request, response){
+    const mysql = require('mysql');
+
+    const config = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'pass',
+        database: 'moviedb'
+        //port: '3306'
+    });
+
+
+    config.query('select title from movies where averageRating>9', function(error, results){
+        if ( error ){
+            throw error;
+        } else {
+            response.send(results);
+        }
     });
 });
 
+app.get('/Stored2', function(request, response){
+    const mysql = require('mysql');
 
+    const config = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'pass',
+        database: 'moviedb'
+        //port: '3306'
+    });
+
+
+    config.query('select title from movies where oscar_win="yes"', function(error, results){
+        if ( error ){
+            throw error;
+        } else {
+            response.send(results);
+        }
+    });
+});
+
+app.get('/Stored3', function(request, response){
+    const mysql = require('mysql');
+
+    const config = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'pass',
+        database: 'moviedb'
+        //port: '3306'
+    });
+
+
+    config.query('select m.title from movies m, studio s where m.id=s.id AND s.lifetime_gross<10000 AND m.year=2019', function(error, results){
+        if ( error ){
+            throw error;
+        } else {
+            response.send(results);
+        }
+    });
+});
 ///////
 // verify webserver is running 
 const webserver = app.listen(3000, function () {

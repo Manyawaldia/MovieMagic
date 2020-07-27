@@ -16,11 +16,11 @@
             <input type="text" id="genresearch" name="genresearch"><br><br>
             <label for="year">Studio: </label>
 
-            Select a Movie Rating Above: <select name="title1" id="title1">
+            <!-- Select a Movie Rating Above: <select name="title1" id="title1">
                 <option value=7>7</option>
                 <option value=8>8</option>
                 <option value=9>9</option>
-            </select>
+            </select> -->
 
             <input type="submit" id="query" value="Get Results"/>
         </form>
@@ -39,13 +39,40 @@
             <label for="genre2">Genre: </label>
             <input type="text" id="genresearch2" name="genresearch2"><br><br>
 
-            <label for="studiosearchhhh">Studio: </label>
-            <input type="text" id="studiosearch2" name="studiosearch2"><br><br>
-
-            <label for="avgRating2">Average Rating: </label>
-            <input type="text" id="averageRating2" name="averageRating2"><br><br>
-
             <input type="submit" id="query" value="Get Results"/>
+        </form>
+    </body>
+    
+    <body>
+        <form action="/Stored1" method="get">
+            <h1>Stored Procedures!</h1>
+            <input id="stored1" type="submit" value="Checkout the highest rated movies of 2019"  />
+                <script>
+                    //- Using a function pointer:
+                    document.getElementById("stored1").onclick = stored1Func('TEST');
+                </script>     
+        </form>
+    </body>
+    <br>
+    <body>
+        <form action="/Stored2" method="get">
+
+            <input id="stored2" type="submit" value="Checkout the movies which have won oscar!"  />
+                <script>
+                    //- Using a function pointer:
+                    document.getElementById("stored2").onclick = stored1Func('TEST');
+                </script>     
+        </form>
+    </body>
+    <br>
+    <body>
+        <form action="/Stored3" method="get">
+
+            <input id="stored3" type="submit" value="Checkout some movies which did not make money in 2019"  />
+                <script>
+                    //- Using a function pointer:
+                    document.getElementById("stored3").onclick = stored1Func('TEST');
+                </script>     
         </form>
     </body>
 </html>
