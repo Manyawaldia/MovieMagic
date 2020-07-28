@@ -22,8 +22,8 @@ app.post('/Movies', function (req, res) {
     const config = mysql.createConnection({
         host: 'localhost',
         user: 'root',
-        password: 'pass',
-        database: 'moviedb'
+        password: 'mysqlpasswd',
+        database: 'cs564cp4'
         //port: '3306'
     });
 
@@ -146,9 +146,11 @@ app.get('/Stored1', function(request, response){
     const config = mysql.createConnection({
         host: 'localhost',
         user: 'root',
-        password: 'pass',
-        database: 'moviedb'
+        password: 'mysqlpasswd',
+        database: 'cs564db4'
         //port: '3306'
+        //please change this part to run on your computer
+
     });
 
 
