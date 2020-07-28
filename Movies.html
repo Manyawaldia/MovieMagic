@@ -2,54 +2,50 @@
 <html>
 
 <head>
-    <title>Table with database</title>
     <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            color: #588c7e;
-            font-family: monospace;
-            font-size: 25px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #588c7e;
-            color: white;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2
+        table,
+        th,
+        td {
+            border: 1px solid black;
         }
     </style>
 </head>
 
 <body>
-    <table>
-        <tr>
-            <th>Id</th>
-            <th>Username</th>
-            <th>Password</th>
-        </tr>
-        <?php
-        $conn = mysqli_connect("localhost", "root", "", "company");
+
+    <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "mysqlpasswd";
+        $dbname = "cs564cp4";
+ 
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
         // Check connection
         if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+            die("Connection failed: " . $conn->connect_error);
         }
-        $sql = "SELECT id, username, password FROM login";
+        
+        //var queryString = "Select DISTINCT m.title, m.year FROM movies m, studio s WHERE " + appendToQuery + ");";
+        //$sql = "SELECT id, firstname, lastname FROoM MyGuests";
+        $sql = "SELECT title, year FROM movies";
         $result = $conn->query($sql);
+
         if ($result->num_rows > 0) {
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-        echo "<tr><td>" . $row["id"]. "</td><td>" . $row["username"] . "</td><td>"
-        . $row["password"]. "</td></tr>";
+            echo "<table><tr><th>Movie Title</th><th>Premiere Year</th></tr>";
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "<tr><td>" . $row["title"]. "</td><td>" . $row["year"].  "</td></tr>";
+            }
+            echo "</table>";
+        } else {
+            echo "0 results";
         }
-        echo "</table>";
-        } else { echo "0 results"; }
+
         $conn->close();
         ?>
-    </table>
+
 </body>
 
 </html>
