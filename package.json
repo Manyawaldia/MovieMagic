@@ -20,6 +20,7 @@
     "@types/mysql": "^2.15.15",
     "express": "^4.17.1",
     "js-beautify": "^1.11.0",
+    "milligram": "^1.4.1",
     "mssql": "^6.2.1",
     "mysql": "^2.18.1"
   }

@@ -112,7 +112,7 @@ app.post('/Add', function(req,res){
         host: 'localhost',
         user: 'root',
         password: 'mysqlpasswd',
-        database: 'cs564db4'
+        database: 'cs564cp4'
         //port: '3306'
     });
 
@@ -147,7 +147,7 @@ app.get('/Stored1', function(request, response){
         host: 'localhost',
         user: 'root',
         password: 'mysqlpasswd',
-        database: 'cs564db4'
+        database: 'cs564cp4'
         //port: '3306'
         //please change this part to run on your computer
 
@@ -170,7 +170,7 @@ app.get('/Stored2', function(request, response){
         host: 'localhost',
         user: 'root',
         password: 'mysqlpasswd',
-        database: 'cs564db4'
+        database: 'cs564cp4'
         //port: '3306'
     });
 
@@ -191,7 +191,7 @@ app.get('/Stored3', function(request, response){
         host: 'localhost',
         user: 'root',
         password: 'mysqlpasswd',
-        database: 'cs564db4'
+        database: 'cs564cp4'
         //port: '3306'
     });
 
