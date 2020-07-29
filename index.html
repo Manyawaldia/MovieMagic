@@ -90,47 +90,88 @@
             background-color: white;
             
         }
+        
+        
+        .toppane {
+            width: 100%;
+            height: 100px;
+            background-color: #f3f0f0;
+           
+            display: flex;
+            align-items: center;
+            justify-content: center
+            
+        }
+        .toppane p {
+            margin: 0 
+        }
+
+        .lpane {
+            width: 8%;
+            height: 400px;
+            float: left;
+            position: relative;
+        }
+
+        .mpane {
+            width: 2%;
+            height: 400px;
+            position: relative;
+            float: left;
+        }
 
         .leftpane {
-            width: 33%;
-            height: 100%;
+            width: 25%;
+            height: 400px;
             float: left;
             background-image: linear-gradient(#EC805C, #dc6d74);
             position: relative;
             border-collapse: collapse;
             border-radius: 25px;
-            padding: 150px; 
+            padding: 15px; 
             color: white;
-            width: 300px;
-            height: 150px;  
+            
+             
         }
 
         .middlepane {
-            width: 34%;
-            height: 100%;
+            width: 25%;
+            height: 400px;
             float: left;
             background-image: linear-gradient(#DF7879, #CD6396);
             position: relative;
             border-collapse: collapse;
             border-radius: 25px;
-            padding: 150px; 
+            padding: 15px; 
             color: white;
-            width: 300px;
-            height: 150px;
+            
+            
         }
 
         .rightpane {
-            width: 33%;
-            height: 100%;
+            width: 25%;
+            height: 400px;
             position: relative;
             float: left;
             background-image: linear-gradient(#D06D9B, #BD57BA);
             border-collapse: collapse;
             border-radius: 25px;
             color: white;
-            padding: 150px; 
-            width: 300px;
-            height: 150px;
+            padding: 15px; 
+            
+            
+        }
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -139,10 +180,12 @@
     <div class="topnav">
         <a class="active" href="#home">Movie Infotracker</a>
         <a href="https://github.com/Manyawaldia">Github Link</a>
-
     </div>
-
     <div class="container">
+        <div class="toppane">
+            <p><h2>Explore!</h2></p>
+        </div>
+        <div class="lpane"></div>
         <div class="leftpane">
             <form action="/Movies" method="post">
 
@@ -162,10 +205,11 @@
                         <option value=9>9</option>
                     </select> -->
                 <!-- <a class="button" href="#">Default Button</a> -->
-        
+                
                 <input type="submit" id="query" color="#3771e0" value="Get Results" />
             </form>
         </div>
+        <div class="mpane"></div>
         <div class="middlepane">
             <form action="/Add" method="post">
                 <h1>Add A Movie to Our Database</h1>
@@ -183,6 +227,7 @@
             </form>
 
         </div>
+        <div class="mpane"></div>
         <div class="rightpane">
             <form action="/Stored1" method="get">
                 <h1>Stored Procedures!</h1>
@@ -212,6 +257,7 @@
             </form>
         
         </div>
+        <div class="lpane"></div>
     </div>
     
 </body>
