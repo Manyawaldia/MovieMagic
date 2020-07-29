@@ -97,7 +97,26 @@ app.post('/Movies', function (req, res) {
 
 
         /////
-        res.send(rows);
+        //res.send(rows);
+        var html = "<table border='1|1'>";
+        for (var i = 0; i < rows.length; i++) {
+            html += "<tr>";
+            html += "<td>" + rows[i].title + "</td>";
+            html += "<td>" + rows[i].year + "</td>";
+            html += "</tr>";
+        }
+        html += "</table>";
+        res.send(`<!DOCTYPE html>
+        <html>
+        <head>
+        <title>Title of the document</title>
+        </head>
+        <body>
+        Table Title is:
+        <br>
+        ${html}
+        </body>
+        </html>`);
     });
     // config.close();
 
@@ -135,7 +154,27 @@ app.post('/Add', function(req,res){
             resultArray.forEach(function (v) { console.log(v) })
         }
         //TODO: prnt out the right movie
-        res.send(rows);
+        //res.send(rows);
+        var html = "<table border='1|1|1|1'>";
+        for (var i = 0; i < rows.length; i++) {
+            html += "<tr>";
+            html += "<td>" + rows[i].id + "</td>";
+            html += "<td>" + rows[i].title + "</td>";
+            html += "<td>" + rows[i].year + "</td>";
+            html += "<td>" + rows[i].genre1 + "</td>";
+            html += "</tr>";
+        }
+        html += "</table>";
+        res.send(`<!DOCTYPE html>
+        <html>
+        <head>
+        <title>Title of the document</title>
+        </head>
+        <body>
+        Movie info SUCCESSFULLY ADDED!
+        
+        </body>
+        </html>`);
 
       });
     //   config.close();
@@ -159,7 +198,26 @@ app.get('/Stored1', function(request, response){
         if ( error ){
             throw error;
         } else {
-            response.send(results);
+            //response.send(results);
+            var str1 = "<table border='1'>";
+            for (var i = 0; i < results.length; i++) {
+                str1 += "<tr>";
+                str1 += "<td>" + results[i].title + "</td>";
+                //html += "<td>" + rows[i].year + "</td>";
+                str1 += "</tr>";
+            }
+            str1 += "</table>";
+            response.send(`<!DOCTYPE html>
+            <html>
+            <head>
+            <title>Title of the document</title>
+            </head>
+            <body>
+            Highest Rated Movies of 2019:
+            <br>
+            ${str1}
+            </body>
+            </html>`);
         }
     });
 });
@@ -180,7 +238,25 @@ app.get('/Stored2', function(request, response){
         if ( error ){
             throw error;
         } else {
-            response.send(results);
+            var str1 = "<table border='1'>";
+            for (var i = 0; i < results.length; i++) {
+                str1 += "<tr>";
+                str1 += "<td>" + results[i].title + "</td>";
+                //html += "<td>" + rows[i].year + "</td>";
+                str1 += "</tr>";
+            }
+            str1 += "</table>";
+            response.send(`<!DOCTYPE html>
+            <html>
+            <head>
+            <title>Title of the document</title>
+            </head>
+            <body>
+            Checkout the movies which have won oscar:
+            <br>
+            ${str1}
+            </body>
+            </html>`);
         }
     });
 });
@@ -201,7 +277,25 @@ app.get('/Stored3', function(request, response){
         if ( error ){
             throw error;
         } else {
-            response.send(results);
+            var str1 = "<table border='1'>";
+            for (var i = 0; i < results.length; i++) {
+                str1 += "<tr>";
+                str1 += "<td>" + results[i].title + "</td>";
+                //html += "<td>" + rows[i].year + "</td>";
+                str1 += "</tr>";
+            }
+            str1 += "</table>";
+            response.send(`<!DOCTYPE html>
+            <html>
+            <head>
+            <title>Title of the document</title>
+            </head>
+            <body>
+            Checkout some movies which did not make money in 2019:
+            <br>
+            ${str1}
+            </body>
+            </html>`);
         }
     });
 });

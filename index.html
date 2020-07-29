@@ -4,16 +4,15 @@
 <head>
     <title>Movie Infotracker</title>
 
-    <!-- you can delete those external css's to make it look closer to original -->
+    <!-- you can delete those external css's to make it look closer to original 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.0/milligram.css">
-
+    -->
     <meta charset="UTF-8">
 
     <!-- Inline .css for the style of the page. Subject ot change as external .css doesn't work for some mysterious reasons -->
     <style>
-        
         body {
             margin: 0;
             font-family: Roboto, sans-serif;
@@ -23,6 +22,11 @@
             margin: 10;
             font-family: Roboto, sans-serif;
         }
+        .container {
+            width: 100%;
+            height: 100%;
+        }
+
 
         .topnav {
             overflow: hidden;
@@ -84,6 +88,49 @@
         .search:focus {
             border: 1px solid #009688;
             background-color: white;
+            
+        }
+
+        .leftpane {
+            width: 33%;
+            height: 100%;
+            float: left;
+            background-image: linear-gradient(#EC805C, #dc6d74);
+            position: relative;
+            border-collapse: collapse;
+            border-radius: 25px;
+            padding: 150px; 
+            color: white;
+            width: 300px;
+            height: 150px;  
+        }
+
+        .middlepane {
+            width: 34%;
+            height: 100%;
+            float: left;
+            background-image: linear-gradient(#DF7879, #CD6396);
+            position: relative;
+            border-collapse: collapse;
+            border-radius: 25px;
+            padding: 150px; 
+            color: white;
+            width: 300px;
+            height: 150px;
+        }
+
+        .rightpane {
+            width: 33%;
+            height: 100%;
+            position: relative;
+            float: left;
+            background-image: linear-gradient(#D06D9B, #BD57BA);
+            border-collapse: collapse;
+            border-radius: 25px;
+            color: white;
+            padding: 150px; 
+            width: 300px;
+            height: 150px;
         }
     </style>
 </head>
@@ -94,47 +141,82 @@
         <a href="https://github.com/Manyawaldia">Github Link</a>
 
     </div>
-    <form action="/Movies" method="post">
 
-        <h1>Search Your Favorite Movie</h1>
+    <div class="container">
+        <div class="leftpane">
+            <form action="/Movies" method="post">
 
-        <label for="title" class="sansserif">Movie Title: </label>
-        <input type="text" id="titlesearch" name="titlesearch"><br><br>
-        <label for="year">Year: </label>
-        <input type="text" id="yearsearch" name="yearsearch"><br><br>
-        <label for="year">Genre: </label>
-        <input type="text" id="genresearch" name="genresearch"><br><br>
+                <h1>Search Your Favorite Movie</h1>
+        
+                <label for="title" class="sansserif">Movie Title: </label>
+                <input type="text" id="titlesearch" name="titlesearch"><br><br>
+                <label for="year">Year: </label>
+                <input type="text" id="yearsearch" name="yearsearch"><br><br>
+                <label for="year">Genre: </label>
+                <input type="text" id="genresearch" name="genresearch"><br><br>
+        
+        
+                <!-- Select a Movie Rating Above: <select name="title1" id="title1">
+                        <option value=7>7</option>
+                        <option value=8>8</option>
+                        <option value=9>9</option>
+                    </select> -->
+                <!-- <a class="button" href="#">Default Button</a> -->
+        
+                <input type="submit" id="query" color="#3771e0" value="Get Results" />
+            </form>
+        </div>
+        <div class="middlepane">
+            <form action="/Add" method="post">
+                <h1>Add A Movie to Our Database</h1>
+        
+                <label for="title2">Movie Title: </label>
+                <input type="text" id="titlesearch2" name="titlesearch2"><br><br>
+        
+                <label for="year2">Year: </label>
+                <input type="text" id="yearsearch2" name="yearsearch2"><br><br>
+        
+                <label for="genre2">Genre: </label>
+                <input type="text" id="genresearch2" name="genresearch2"><br><br>
+        
+                <input type="submit" id="query" value="Get Results" />
+            </form>
 
+        </div>
+        <div class="rightpane">
+            <form action="/Stored1" method="get">
+                <h1>Stored Procedures!</h1>
+                <input id="stored1" type="submit" value="Checkout the highest rated movies of 2019" />
+                <script>
+                    //- Using a function pointer:
+        
+                    document.getElementById("stored1").onclick = stored1Func('TEST');
+                </script>
+            </form>
+            <form action="/Stored2" method="get">
 
-        <!-- Select a Movie Rating Above: <select name="title1" id="title1">
-                <option value=7>7</option>
-                <option value=8>8</option>
-                <option value=9>9</option>
-            </select> -->
-        <!-- <a class="button" href="#">Default Button</a> -->
+                <input id="stored2" type="submit" value="Checkout the movies which have won oscar!" />
+                <script>
+                    //- Using a function pointer:
+                    document.getElementById("stored2").onclick = stored1Func('TEST');
+                </script>
+            </form>
+            <form action="/Stored3" method="get">
 
-        <input type="submit" id="query" color="#3771e0" value="Get Results" />
-    </form>
+                <input id="stored3" type="submit" value="Checkout some movies which did not make money in 2019" />
+                <script>
+                    //- Using a function pointer:
+        
+                    document.getElementById("stored3").onclick = stored1Func('TEST');
+                </script>
+            </form>
+        
+        </div>
+    </div>
+    
 </body>
 
-<body>
-    <form action="/Add" method="post">
-        <h1>Add A Movie to Our Database</h1>
-
-        <label for="title2">Movie Title: </label>
-        <input type="text" id="titlesearch2" name="titlesearch2"><br><br>
-
-        <label for="year2">Year: </label>
-        <input type="text" id="yearsearch2" name="yearsearch2"><br><br>
-
-        <label for="genre2">Genre: </label>
-        <input type="text" id="genresearch2" name="genresearch2"><br><br>
-
-        <input type="submit" id="query" value="Get Results" />
-    </form>
-</body>
-
-<body>
+<!-- <body>
     <form action="/Stored1" method="get">
         <h1>Stored Procedures!</h1>
         <input id="stored1" type="submit" value="Checkout the highest rated movies of 2019" />
@@ -160,7 +242,7 @@
 <br>
 
 <body>
-    <form action="/Stored3" method="get">
+    <form action="/Stored3" method="get">s
 
         <input id="stored3" type="submit" value="Checkout some movies which did not make money in 2019" />
         <script>
@@ -169,6 +251,7 @@
             document.getElementById("stored3").onclick = stored1Func('TEST');
         </script>
     </form>
-</body>
+</body> -->
+
 
 </html>
