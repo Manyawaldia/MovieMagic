@@ -1,12 +1,5 @@
 <!DOCTYPE html>
 <html>
-<head>
-<style>
-table, th, td {
-    border: 1px solid black;
-}
-</style>
-</head>
 <body>
 
 <?php
@@ -22,19 +15,18 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT m.title from movies m, studio s where m.id=s.id AND s.lifetime_gross<10000 AND m.year=2019";
+$sql = "Select DISTINCT m.title, m.year FROM movies m, studio s WHERE (m.id=s.id AND m.title = 'Pearl Harbor');";
 $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    echo "<table><tr><th>Movie Title</th><</tr>";
+<!-- if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "<tr><td>" . $row["m.title"]. "</td></tr>";
+        echo "<br> id: ". $row["id"]. " - Name: ". $row["firstname"]. " " . $row["lastname"] . "<br>";
     }
-    echo "</table>";
 } else {
     echo "0 results";
-}
+} -->
+
 
 $conn->close();
 ?>
