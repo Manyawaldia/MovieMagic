@@ -1,86 +1,174 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
-    <head>
+
+<head>
+    <title>Movie Infotracker</title>
+
+    <!-- you can delete those external css's to make it look closer to original -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.0/milligram.css">
+
+    <meta charset="UTF-8">
+
+    <!-- Inline .css for the style of the page. Subject ot change as external .css doesn't work for some mysterious reasons -->
+    <style>
         
-        <link rel="stylesheet" type = "text/css" href="styles.css">
+        body {
+            margin: 0;
+            font-family: Roboto, sans-serif;
+        }
 
-        <!-- <meta charset="utf-8"/> -->
-    </head>
-    <body>
-        <form action="/Movies" method="post">
-            <h1>Welcome to the Movie Database</h1>
-            <h1>Heading</h1>
-            <h2>Heading</h2>
-           
-            <label for="title">Movie Title: </label>
-            <input type="text" id="titlesearch" name="titlesearch"><br><br>
-            <label for="year">Year: </label>
-            <input type="text" id="yearsearch" name="yearsearch"><br><br>
-            <label for="year">Genre: </label>
-            <input type="text" id="genresearch" name="genresearch"><br><br>
-          
+        h1 {
+            margin: 10;
+            font-family: Roboto, sans-serif;
+        }
 
-            <!-- Select a Movie Rating Above: <select name="title1" id="title1">
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #3771e0;
+            color: white;
+        }
+
+        .wrapper {
+            position: relative;
+            display: flex;
+            min-width: 100px;
+        }
+
+        .search {
+            border: 1px solid grey;
+            border-radius: 5px;
+            height: 25px;
+            width: 100%;
+            padding: 2px 23px 2px 30px;
+            outline: 0;
+            background-color: #f5f5f5;
+        }
+
+        .search-icon {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            width: 14px;
+        }
+
+        .clear-icon {
+            position: absolute;
+            top: 9px;
+            right: 8px;
+            width: 12px;
+            cursor: pointer;
+            visibility: hidden;
+        }
+
+        .search:hover,
+        .search:focus {
+            border: 1px solid #009688;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topnav">
+        <a class="active" href="#home">Movie Infotracker</a>
+        <a href="https://github.com/Manyawaldia">Github Link</a>
+
+    </div>
+    <form action="/Movies" method="post">
+
+        <h1>Search Your Favorite Movie</h1>
+
+        <label for="title" class="sansserif">Movie Title: </label>
+        <input type="text" id="titlesearch" name="titlesearch"><br><br>
+        <label for="year">Year: </label>
+        <input type="text" id="yearsearch" name="yearsearch"><br><br>
+        <label for="year">Genre: </label>
+        <input type="text" id="genresearch" name="genresearch"><br><br>
+
+
+        <!-- Select a Movie Rating Above: <select name="title1" id="title1">
                 <option value=7>7</option>
                 <option value=8>8</option>
                 <option value=9>9</option>
             </select> -->
-            <a class="button" href="#">Default Button</a>
+        <!-- <a class="button" href="#">Default Button</a> -->
 
-            <input type="submit" id="query" color = "#3771e0" value="Get Results"/>
-        </form>
-    </body>
-    
-    <body>
-        <form action="/Add" method="post">
-            <h1>Add A Movie to Our Database</h1>
-            
-            <label for="title2">Movie Title: </label>
-            <input type="text" id="titlesearch2" name="titlesearch2"><br><br>
+        <input type="submit" id="query" color="#3771e0" value="Get Results" />
+    </form>
+</body>
 
-            <label for="year2">Year: </label>
-            <input type="text" id="yearsearch2" name="yearsearch2"><br><br>
+<body>
+    <form action="/Add" method="post">
+        <h1>Add A Movie to Our Database</h1>
 
-            <label for="genre2">Genre: </label>
-            <input type="text" id="genresearch2" name="genresearch2"><br><br>
+        <label for="title2">Movie Title: </label>
+        <input type="text" id="titlesearch2" name="titlesearch2"><br><br>
 
-            <input type="submit" id="query" value="Get Results"/>
-        </form>
-    </body>
-    
-    <body>
-        <form action="/Stored1" method="get">
-            <h1>Stored Procedures!</h1>
-            <input id="stored1" type="submit" value="Checkout the highest rated movies of 2019"  />
-                <script>
-                    //- Using a function pointer:
-                    
-                    document.getElementById("stored1").onclick = stored1Func('TEST');
-                </script>     
-        </form>
-    </body>
-    <br>
-    <body>
-        <form action="/Stored2" method="get">
+        <label for="year2">Year: </label>
+        <input type="text" id="yearsearch2" name="yearsearch2"><br><br>
 
-            <input id="stored2" type="submit" value="Checkout the movies which have won oscar!"  />
-                <script>
-                    //- Using a function pointer:
-                    document.getElementById("stored2").onclick = stored1Func('TEST');
-                </script>     
-        </form>
-    </body>
-    <br>
-    <body>
-        <form action="/Stored3" method="get">
+        <label for="genre2">Genre: </label>
+        <input type="text" id="genresearch2" name="genresearch2"><br><br>
 
-            <input id="stored3" type="submit" value="Checkout some movies which did not make money in 2019"  />
-                <script>
-                    //- Using a function pointer:
-                    
-                    document.getElementById("stored3").onclick = stored1Func('TEST');
-                </script>     
-        </form>
-    </body>
+        <input type="submit" id="query" value="Get Results" />
+    </form>
+</body>
+
+<body>
+    <form action="/Stored1" method="get">
+        <h1>Stored Procedures!</h1>
+        <input id="stored1" type="submit" value="Checkout the highest rated movies of 2019" />
+        <script>
+            //- Using a function pointer:
+
+            document.getElementById("stored1").onclick = stored1Func('TEST');
+        </script>
+    </form>
+</body>
+<br>
+
+<body>
+    <form action="/Stored2" method="get">
+
+        <input id="stored2" type="submit" value="Checkout the movies which have won oscar!" />
+        <script>
+            //- Using a function pointer:
+            document.getElementById("stored2").onclick = stored1Func('TEST');
+        </script>
+    </form>
+</body>
+<br>
+
+<body>
+    <form action="/Stored3" method="get">
+
+        <input id="stored3" type="submit" value="Checkout some movies which did not make money in 2019" />
+        <script>
+            //- Using a function pointer:
+
+            document.getElementById("stored3").onclick = stored1Func('TEST');
+        </script>
+    </form>
+</body>
+
 </html>
-
