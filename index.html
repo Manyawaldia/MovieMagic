@@ -1,21 +1,17 @@
 <!DOCTYPE html> 
 <html>
     <head>
-        <title></title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.0/milligram.css">
-        <style>
-            table, th, td {
-                border: 1px solid black;
-            }
-            </style>
-        <meta charset="utf-8"/>
+        
+        <link rel="stylesheet" type = "text/css" href="styles.css">
+
+        <!-- <meta charset="utf-8"/> -->
     </head>
     <body>
         <form action="/Movies" method="post">
             <h1>Welcome to the Movie Database</h1>
-            
+            <h1>Heading</h1>
+            <h2>Heading</h2>
+           
             <label for="title">Movie Title: </label>
             <input type="text" id="titlesearch" name="titlesearch"><br><br>
             <label for="year">Year: </label>
@@ -29,8 +25,9 @@
                 <option value=8>8</option>
                 <option value=9>9</option>
             </select> -->
+            <a class="button" href="#">Default Button</a>
 
-            <input type="submit" id="query" value="Get Results"/>
+            <input type="submit" id="query" color = "#3771e0" value="Get Results"/>
         </form>
     </body>
     
@@ -80,8 +77,8 @@
             <input id="stored3" type="submit" value="Checkout some movies which did not make money in 2019"  />
                 <script>
                     //- Using a function pointer:
-                    <button onclick="location.href='http://www.example.com'" type="button">www.google.com</button>
-                    //document.getElementById("stored3").onclick = stored1Func('TEST');
+                    
+                    document.getElementById("stored3").onclick = stored1Func('TEST');
                 </script>     
         </form>
     </body>
