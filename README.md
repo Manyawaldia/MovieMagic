@@ -1,1 +1,1 @@
-# ProjectFinal
+# Movie Magic - A Database Project
